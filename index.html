@@ -648,6 +648,24 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    const navLinks = document.querySelectorAll('#navmenu a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            // Untuk link yang bukan internal (#), biarkan tetap jalan tanpa ganti title
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('http')) {
+                return;
+            }
+
+            const text = this.textContent.trim();
+            if (text) {
+                document.title = `${text} | PMII Rayon An Nabah`;
+            }
+        });
+    });
+</script>
 
 </body>
 
